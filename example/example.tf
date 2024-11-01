@@ -8,9 +8,9 @@ data "azurerm_subscription" "primary" {
 module "azuread_group" {
   source           = "git::https://github.com/BrettOJ/tf-az-module-azuread-group?ref=main"
   display_name     = var.group_display_name
-  owners           = [data.azuread_client_config.current.object_id]
+  owners           = [data.azurerm_client_config.current.object_id]
   security_enabled = var.security_enabled
-  members          = [data.azuread_client_config.current.object_id]
+  group_members    = [data.azurerm_client_config.current.object_id]
 }
 
 
